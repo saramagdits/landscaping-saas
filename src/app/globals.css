@@ -23,4 +23,196 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  /* Mobile-friendly improvements */
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Mobile-friendly improvements */
+@media (max-width: 768px) {
+  /* Improve touch targets */
+  button, a, input, select, textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better scrolling on mobile */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Improve form elements on mobile */
+  input, select, textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  /* Better spacing for mobile */
+  .space-y-6 > * + * {
+    margin-top: 1.5rem;
+  }
+  
+  .space-y-8 > * + * {
+    margin-top: 2rem;
+  }
+}
+
+/* Improve FullCalendar mobile experience */
+.fc {
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .fc {
+    font-size: 12px;
+  }
+  
+  .fc .fc-toolbar {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .fc .fc-toolbar-title {
+    font-size: 1.25rem;
+  }
+  
+  .fc .fc-button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  .fc .fc-daygrid-day-number {
+    font-size: 0.875rem;
+  }
+  
+  .fc .fc-event {
+    font-size: 0.75rem;
+    padding: 0.125rem 0.25rem;
+  }
+}
+
+/* Improve modal experience on mobile */
+@media (max-width: 768px) {
+  .fixed.inset-0 {
+    padding: 1rem;
+  }
+  
+  .max-w-2xl {
+    max-width: calc(100vw - 2rem);
+  }
+}
+
+/* Improve table responsiveness */
+@media (max-width: 768px) {
+  table {
+    font-size: 0.875rem;
+  }
+  
+  th, td {
+    padding: 0.5rem 0.25rem;
+  }
+}
+
+/* Improve card layouts on mobile */
+@media (max-width: 768px) {
+  .grid {
+    gap: 1rem;
+  }
+  
+  .p-6 {
+    padding: 1rem;
+  }
+  
+  .p-8 {
+    padding: 1.5rem;
+  }
+}
+
+/* Improve button groups on mobile */
+@media (max-width: 768px) {
+  .flex.gap-2 {
+    gap: 0.5rem;
+  }
+  
+  .flex.gap-4 {
+    gap: 0.75rem;
+  }
+}
+
+/* Improve text readability on mobile */
+@media (max-width: 768px) {
+  .text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  
+  .text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
+
+/* Improve form layouts on mobile */
+@media (max-width: 768px) {
+  /* Force single column layout on mobile for responsive grids */
+  .grid-cols-1.md\:grid-cols-2,
+  .grid-cols-1.md\:grid-cols-3,
+  .grid-cols-1.lg\:grid-cols-3 {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Improve navigation on mobile */
+@media (max-width: 768px) {
+  .lg\:pl-64 {
+    padding-left: 0;
+  }
+  
+  .lg\:translate-x-0 {
+    transform: translateX(-100%);
+  }
+  
+  .lg\:static {
+    position: fixed;
+  }
+}
+
+/* Improve sidebar on mobile */
+@media (max-width: 1024px) {
+  .w-64 {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+/* Improve loading states on mobile */
+@media (max-width: 768px) {
+  .animate-spin {
+    animation-duration: 1s;
+  }
+}
+
+/* Improve focus states for accessibility */
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+a:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Improve hover states for touch devices */
+@media (hover: none) {
+  .hover\:bg-blue-700:hover {
+    background-color: #1d4ed8;
+  }
+  
+  .hover\:bg-gray-50:hover {
+    background-color: #f9fafb;
+  }
+  
+  .hover\:text-white:hover {
+    color: #ffffff;
+  }
 }

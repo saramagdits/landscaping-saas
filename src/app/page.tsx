@@ -1,103 +1,182 @@
+'use client';
+
 import Image from "next/image";
+import { useAuth } from "@/contexts/AuthContext";
+import { SignInButton } from "@/components/SignInButton";
+import { UserProfile } from "@/components/UserProfile";
+import { ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const { user, loading, signOut } = useAuth();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#313c2c] text-white font-sans flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-[#e6ff4a] border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#313c2c] text-white font-sans flex flex-col">
+      {/* Navbar */}
+      <nav className="flex items-center justify-between px-8 py-6">
+        <div className="flex items-center gap-2">
+          {/* Logo (replace with actual logo if available) */}
+          <div className="bg-[#e6ff4a] rounded w-8 h-8 flex items-center justify-center">
+            <span className="text-[#313c2c] font-bold text-xl">K</span>
+          </div>
+          <span className="font-bold text-xl tracking-tight">klumsi</span>
+        </div>
+        <div className="flex items-center gap-8 text-base font-medium">
+          <a href="#" className="hover:underline">About us</a>
+          <a href="#" className="hover:underline">Products</a>
+          <a href="#" className="hover:underline">Pricing</a>
+          {user && (
+            <a href="/dashboard" className="hover:underline">Dashboard</a>
+          )}
+        </div>
+        <div className="flex items-center gap-4">
+          {user ? (
+            <>
+              <UserProfile />
+              <button
+                onClick={handleSignOut}
+                className="flex items-center gap-2 text-white hover:text-[#e6ff4a] transition-colors"
+                title="Sign out"
+              >
+                <ArrowRightOnRectangleIcon className="h-5 w-5" />
+                <span className="hidden sm:inline">Sign out</span>
+              </button>
+            </>
+          ) : (
+            <SignInButton />
+          )}
+        </div>
+      </nav>
+
+      {/* Main Section */}
+      <main className="flex-1 flex flex-col md:flex-row items-center justify-between px-8 md:px-20 pt-8 md:pt-0 relative">
+        {/* Left: Headline and CTAs */}
+        <div className="max-w-xl z-10">
+          <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
+            Empower Your Team<br />with Our Platform
+          </h1>
+          <p className="text-lg md:text-xl mb-8 text-[#d2d7cb]">
+            Let our <a href="#" className="text-[#e6ff4a] underline font-semibold">badass product</a> help you create a powerful online presence that lasts with Klumsi
+          </p>
+          <div className="flex gap-4">
+            {user ? (
+              <a href="/dashboard" className="bg-[#e6ff4a] text-[#313c2c] font-semibold rounded px-7 py-3 shadow hover:bg-[#d4f53a] transition">
+                Go to Dashboard
+              </a>
+            ) : (
+              <SignInButton />
+            )}
+            <a href="#" className="border border-white text-white font-semibold rounded px-7 py-3 hover:bg-white hover:text-[#313c2c] transition">Request demo</a>
+          </div>
+        </div>
+
+        {/* Right: Floating Company Cards */}
+        <div className="relative flex-1 flex items-center justify-center mt-16 md:mt-0">
+          {/* Background pattern (optional, can be replaced with SVG) */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            {/* Placeholder for background pattern */}
+            <svg width="340" height="340" fill="none" viewBox="0 0 340 340" className="opacity-10">
+              <rect x="20" y="20" width="80" height="80" stroke="#fff" strokeWidth="2" rx="12" />
+              <rect x="120" y="120" width="80" height="80" stroke="#fff" strokeWidth="2" rx="12" />
+              <rect x="220" y="220" width="80" height="80" stroke="#fff" strokeWidth="2" rx="12" />
+            </svg>
+          </div>
+          {/* Cards */}
+          <div className="relative flex flex-col gap-6 items-end">
+            {/* Spotify Card */}
+            <div className="bg-white text-[#313c2c] rounded-xl shadow-lg p-6 w-72 mb-2">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="bg-[#1db954] rounded-full w-8 h-8 flex items-center justify-center">
+                  <span className="font-bold text-white">S</span>
+                </div>
+                <div>
+                  <div className="font-semibold">Spotify</div>
+                  <div className="text-xs text-gray-500">Currently visiting</div>
+                </div>
+              </div>
+              <div className="text-sm">
+                <div><span className="font-semibold">INDUSTRY</span>: Music</div>
+                <div><span className="font-semibold">REVENUE</span>: 1B - 10B $</div>
+                <div><span className="font-semibold">EMPLOYEES</span>: 1001-5000</div>
+                <div><span className="font-semibold">DOMAIN</span>: spotify.com</div>
+                <div><span className="font-semibold">LOCATION</span>: Stockholm, Sweden</div>
+              </div>
+            </div>
+            {/* Intercom Card */}
+            <div className="bg-white text-[#313c2c] rounded-xl shadow p-4 w-56 absolute right-[-120px] top-[-60px]">
+              <div className="flex items-center gap-2 mb-1">
+                <div className="bg-[#3864fa] rounded w-6 h-6 flex items-center justify-center">
+                  <span className="font-bold text-white text-sm">I</span>
+                </div>
+                <div>
+                  <div className="font-semibold text-sm">Intercom</div>
+                  <div className="text-[10px] text-gray-500">Currently visiting</div>
+                </div>
+              </div>
+              <div className="text-xs">
+                <div><span className="font-semibold">INDUSTRY</span>: IT</div>
+                <div><span className="font-semibold">REVENUE</span>: $100M</div>
+                <div><span className="font-semibold">EMPLOYEES</span>: 500</div>
+                <div><span className="font-semibold">DOMAIN</span>: intercom.com</div>
+                <div><span className="font-semibold">LOCATION</span>: Dublin, Ireland</div>
+              </div>
+            </div>
+            {/* Slack Card */}
+            <div className="bg-white text-[#313c2c] rounded-xl shadow p-4 w-56 ml-12">
+              <div className="flex items-center gap-2 mb-1">
+                <div className="bg-[#611f69] rounded w-6 h-6 flex items-center justify-center">
+                  <span className="font-bold text-white text-sm">S</span>
+                </div>
+                <div>
+                  <div className="font-semibold text-sm">Slack</div>
+                  <div className="text-[10px] text-gray-500">Currently visiting</div>
+                </div>
+              </div>
+              <div className="text-xs">
+                <div><span className="font-semibold">INDUSTRY</span>: IT</div>
+                <div><span className="font-semibold">REVENUE</span>: $400M</div>
+                <div><span className="font-semibold">EMPLOYEES</span>: 1,500</div>
+                <div><span className="font-semibold">DOMAIN</span>: slack.com</div>
+                <div><span className="font-semibold">LOCATION</span>: San Francisco, CA</div>
+              </div>
+            </div>
+            {/* Twilio Card */}
+            <div className="bg-white text-[#313c2c] rounded-xl shadow p-4 w-56 absolute right-[-60px] top-[160px]">
+              <div className="flex items-center gap-2 mb-1">
+                <div className="bg-[#f22f46] rounded w-6 h-6 flex items-center justify-center">
+                  <span className="font-bold text-white text-sm">T</span>
+                </div>
+                <div>
+                  <div className="font-semibold text-sm">Twilio</div>
+                  <div className="text-[10px] text-gray-500">Currently visiting</div>
+                </div>
+              </div>
+              <div className="text-xs">
+                <div><span className="font-semibold">INDUSTRY</span>: IT</div>
+                <div><span className="font-semibold">REVENUE</span>: $650M</div>
+                <div><span className="font-semibold">EMPLOYEES</span>: 4,000</div>
+                <div><span className="font-semibold">DOMAIN</span>: twilio.com</div>
+                <div><span className="font-semibold">LOCATION</span>: San Francisco, CA</div>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }

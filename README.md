@@ -1,24 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Klumsi - Landscape SaaS Platform
+
+A modern SaaS platform built with Next.js, featuring Google OAuth authentication and Firestore user management.
+
+## Features
+
+- 🔐 **Google OAuth 2.0 Authentication** - Secure sign-in with Google accounts
+- 📅 **Google Calendar Integration** - Sync and manage your Google Calendar events
+- 📊 **User Profile Management** - Store and manage user data in Firestore
+- 🏢 **Company Settings** - Manage company information and logo for proposals and invoices
+- 📄 **Proposal & Invoice System** - Create professional proposals and invoices with company branding
+- 🛡️ **Protected Routes** - Secure access to authenticated content
+- 🎨 **Modern UI** - Beautiful, responsive design with Tailwind CSS
+- ⚡ **Next.js 15** - Latest features with App Router and Turbopack
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- Firebase project with Authentication and Firestore enabled
+- Google Cloud project with Calendar API enabled
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd landscape-saas
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Set up Firebase and Google Calendar:
+   - Follow the [Firebase Setup Guide](./FIREBASE_SETUP.md)
+   - Create a `.env.local` file with your Firebase and Google OAuth configuration
+
+4. Run the development server:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Authentication & Calendar Integration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project implements Google OAuth 2.0 authentication using Firebase Auth with Google Calendar integration:
+
+- **Sign In**: Users can sign in with their Google account
+- **Calendar Sync**: Automatically syncs with Google Calendar after authentication
+- **User Profiles**: Basic user data is stored in Firestore (`users/{uid}`)
+- **Session Management**: Automatic session persistence and management
+- **Protected Routes**: Use the `ProtectedRoute` component to secure pages
+- **Token Management**: Automatic token refresh for calendar API access
+
+### Key Components
+
+- `AuthContext` - Manages authentication state and user data
+- `SignInButton` - Google OAuth sign-in button with loading states
+- `UserProfile` - Displays user information and sign-out option
+- `ProtectedRoute` - Wrapper for pages requiring authentication
+- `useUser` - Custom hook for easy access to user data
+- `CalendarManager` - Manages Google Calendar integration and settings
+- `CalendarWidget` - Displays upcoming events on the dashboard
+- `calendarService` - Handles Google Calendar API calls and token management
+
+## Project Structure
+
+```
+src/
+├── app/                 # Next.js App Router pages
+│   ├── dashboard/       # Protected dashboard page
+│   └── page.tsx         # Landing page
+├── components/          # Reusable UI components
+│   ├── SignInButton.tsx
+│   ├── UserProfile.tsx
+│   └── ProtectedRoute.tsx
+├── contexts/            # React contexts
+│   └── AuthContext.tsx  # Authentication context
+├── hooks/               # Custom React hooks
+│   └── useUser.ts       # User data hook
+└── lib/                 # Utility libraries
+    └── firebase.ts      # Firebase configuration
+```
 
 ## Learn More
 
