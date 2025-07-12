@@ -32,14 +32,14 @@ export default function Home() {
         <div className="flex items-center gap-2">
           {/* Logo (replace with actual logo if available) */}
           <div className="bg-[#e6ff4a] rounded w-8 h-8 flex items-center justify-center">
-            <span className="text-[#313c2c] font-bold text-xl">K</span>
+            <span className="text-[#313c2c] font-bold text-xl">L</span>
           </div>
-          <span className="font-bold text-xl tracking-tight">Yardwise</span>
+          <span className="font-bold text-xl tracking-tight">LandscapeFlow</span>
         </div>
         <div className="flex items-center gap-8 text-base font-medium">
-          <a href="#" className="hover:underline">About us</a>
-          <a href="#" className="hover:underline">Products</a>
+          <a href="#" className="hover:underline">Features</a>
           <a href="#" className="hover:underline">Pricing</a>
+          <a href="#" className="hover:underline">Support</a>
           {user && (
             <a href="/dashboard" className="hover:underline">Dashboard</a>
           )}
@@ -68,10 +68,10 @@ export default function Home() {
         {/* Left: Headline and CTAs */}
         <div className="max-w-xl z-10">
           <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
-            Empower Your Team<br />with Our Platform
+            Streamline Your<br />Landscaping Business
           </h1>
           <p className="text-lg md:text-xl mb-8 text-[#d2d7cb]">
-            Let our <a href="#" className="text-[#e6ff4a] underline font-semibold">badass product</a> help you create a powerful online presence that lasts with Yardwise
+            From <a href="#" className="text-[#e6ff4a] underline font-semibold">client onboarding</a> to <a href="#" className="text-[#e6ff4a] underline font-semibold">proposal generation</a> and <a href="#" className="text-[#e6ff4a] underline font-semibold">invoicing</a> - manage everything in one powerful platform
           </p>
           <div className="flex gap-4">
             {user ? (
@@ -81,7 +81,7 @@ export default function Home() {
             ) : (
               <SignInButton />
             )}
-            <a href="#" className="border border-white text-white font-semibold rounded px-7 py-3 hover:bg-white hover:text-[#313c2c] transition">Request demo</a>
+            <a href="#" className="border border-white text-white font-semibold rounded px-7 py-3 hover:bg-white hover:text-[#313c2c] transition">Schedule Demo</a>
           </div>
         </div>
 
@@ -98,80 +98,80 @@ export default function Home() {
           </div>
           {/* Cards */}
           <div className="relative flex flex-col gap-6 items-end">
-            {/* Spotify Card */}
+            {/* Green Thumb Landscaping Card */}
             <div className="bg-white text-[#313c2c] rounded-xl shadow-lg p-6 w-72 mb-2">
               <div className="flex items-center gap-3 mb-2">
-                <div className="bg-[#1db954] rounded-full w-8 h-8 flex items-center justify-center">
-                  <span className="font-bold text-white">S</span>
+                <div className="bg-[#22c55e] rounded-full w-8 h-8 flex items-center justify-center">
+                  <span className="font-bold text-white">G</span>
                 </div>
                 <div>
-                  <div className="font-semibold">Spotify</div>
-                  <div className="text-xs text-gray-500">Currently visiting</div>
+                  <div className="font-semibold">Green Thumb Landscaping</div>
+                  <div className="text-xs text-gray-500">New client onboarded</div>
                 </div>
               </div>
               <div className="text-sm">
-                <div><span className="font-semibold">INDUSTRY</span>: Music</div>
-                <div><span className="font-semibold">REVENUE</span>: 1B - 10B $</div>
-                <div><span className="font-semibold">EMPLOYEES</span>: 1001-5000</div>
-                <div><span className="font-semibold">DOMAIN</span>: spotify.com</div>
-                <div><span className="font-semibold">LOCATION</span>: Stockholm, Sweden</div>
+                <div><span className="font-semibold">SERVICE</span>: Lawn Maintenance</div>
+                <div><span className="font-semibold">PROJECT VALUE</span>: $2,400/year</div>
+                <div><span className="font-semibold">LOCATION</span>: Residential</div>
+                <div><span className="font-semibold">FREQUENCY</span>: Weekly</div>
+                <div><span className="font-semibold">STATUS</span>: Proposal Sent</div>
               </div>
             </div>
-            {/* Intercom Card */}
+            {/* Elite Gardens Card */}
             <div className="bg-white text-[#313c2c] rounded-xl shadow p-4 w-56 absolute right-[-120px] top-[-60px]">
               <div className="flex items-center gap-2 mb-1">
-                <div className="bg-[#3864fa] rounded w-6 h-6 flex items-center justify-center">
-                  <span className="font-bold text-white text-sm">I</span>
+                <div className="bg-[#8b5cf6] rounded w-6 h-6 flex items-center justify-center">
+                  <span className="font-bold text-white text-sm">E</span>
                 </div>
                 <div>
-                  <div className="font-semibold text-sm">Intercom</div>
-                  <div className="text-[10px] text-gray-500">Currently visiting</div>
+                  <div className="font-semibold text-sm">Elite Gardens</div>
+                  <div className="text-[10px] text-gray-500">Invoice generated</div>
                 </div>
               </div>
               <div className="text-xs">
-                <div><span className="font-semibold">INDUSTRY</span>: IT</div>
-                <div><span className="font-semibold">REVENUE</span>: $100M</div>
-                <div><span className="font-semibold">EMPLOYEES</span>: 500</div>
-                <div><span className="font-semibold">DOMAIN</span>: intercom.com</div>
-                <div><span className="font-semibold">LOCATION</span>: Dublin, Ireland</div>
+                <div><span className="font-semibold">SERVICE</span>: Design & Install</div>
+                <div><span className="font-semibold">PROJECT VALUE</span>: $15,000</div>
+                <div><span className="font-semibold">LOCATION</span>: Commercial</div>
+                <div><span className="font-semibold">STATUS</span>: Payment Due</div>
+                <div><span className="font-semibold">DUE DATE</span>: 15 days</div>
               </div>
             </div>
-            {/* Slack Card */}
+            {/* Nature's Touch Card */}
             <div className="bg-white text-[#313c2c] rounded-xl shadow p-4 w-56 ml-12">
               <div className="flex items-center gap-2 mb-1">
-                <div className="bg-[#611f69] rounded w-6 h-6 flex items-center justify-center">
-                  <span className="font-bold text-white text-sm">S</span>
+                <div className="bg-[#f59e0b] rounded w-6 h-6 flex items-center justify-center">
+                  <span className="font-bold text-white text-sm">N</span>
                 </div>
                 <div>
-                  <div className="font-semibold text-sm">Slack</div>
-                  <div className="text-[10px] text-gray-500">Currently visiting</div>
+                  <div className="font-semibold text-sm">Nature's Touch</div>
+                  <div className="text-[10px] text-gray-500">Proposal created</div>
                 </div>
               </div>
               <div className="text-xs">
-                <div><span className="font-semibold">INDUSTRY</span>: IT</div>
-                <div><span className="font-semibold">REVENUE</span>: $400M</div>
-                <div><span className="font-semibold">EMPLOYEES</span>: 1,500</div>
-                <div><span className="font-semibold">DOMAIN</span>: slack.com</div>
-                <div><span className="font-semibold">LOCATION</span>: San Francisco, CA</div>
+                <div><span className="font-semibold">SERVICE</span>: Hardscaping</div>
+                <div><span className="font-semibold">PROJECT VALUE</span>: $8,500</div>
+                <div><span className="font-semibold">LOCATION</span>: Residential</div>
+                <div><span className="font-semibold">STATUS</span>: Under Review</div>
+                <div><span className="font-semibold">EXPIRES</span>: 30 days</div>
               </div>
             </div>
-            {/* Twilio Card */}
+            {/* Premier Landscapes Card */}
             <div className="bg-white text-[#313c2c] rounded-xl shadow p-4 w-56 absolute right-[-60px] top-[160px]">
               <div className="flex items-center gap-2 mb-1">
-                <div className="bg-[#f22f46] rounded w-6 h-6 flex items-center justify-center">
-                  <span className="font-bold text-white text-sm">T</span>
+                <div className="bg-[#06b6d4] rounded w-6 h-6 flex items-center justify-center">
+                  <span className="font-bold text-white text-sm">P</span>
                 </div>
                 <div>
-                  <div className="font-semibold text-sm">Twilio</div>
-                  <div className="text-[10px] text-gray-500">Currently visiting</div>
+                  <div className="font-semibold text-sm">Premier Landscapes</div>
+                  <div className="text-[10px] text-gray-500">Payment received</div>
                 </div>
               </div>
               <div className="text-xs">
-                <div><span className="font-semibold">INDUSTRY</span>: IT</div>
-                <div><span className="font-semibold">REVENUE</span>: $650M</div>
-                <div><span className="font-semibold">EMPLOYEES</span>: 4,000</div>
-                <div><span className="font-semibold">DOMAIN</span>: twilio.com</div>
-                <div><span className="font-semibold">LOCATION</span>: San Francisco, CA</div>
+                <div><span className="font-semibold">SERVICE</span>: Seasonal Cleanup</div>
+                <div><span className="font-semibold">PROJECT VALUE</span>: $1,200</div>
+                <div><span className="font-semibold">LOCATION</span>: Residential</div>
+                <div><span className="font-semibold">STATUS</span>: Completed</div>
+                <div><span className="font-semibold">PAID</span>: $1,200</div>
               </div>
             </div>
           </div>
