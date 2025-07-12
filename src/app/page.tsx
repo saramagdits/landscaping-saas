@@ -34,7 +34,7 @@ export default function Home() {
           <div className="bg-[#e6ff4a] rounded w-8 h-8 flex items-center justify-center">
             <span className="text-[#313c2c] font-bold text-xl">K</span>
           </div>
-          <span className="font-bold text-xl tracking-tight">klumsi</span>
+          <span className="font-bold text-xl tracking-tight">Yardwise</span>
         </div>
         <div className="flex items-center gap-8 text-base font-medium">
           <a href="#" className="hover:underline">About us</a>
@@ -71,7 +71,7 @@ export default function Home() {
             Empower Your Team<br />with Our Platform
           </h1>
           <p className="text-lg md:text-xl mb-8 text-[#d2d7cb]">
-            Let our <a href="#" className="text-[#e6ff4a] underline font-semibold">badass product</a> help you create a powerful online presence that lasts with Klumsi
+            Let our <a href="#" className="text-[#e6ff4a] underline font-semibold">badass product</a> help you create a powerful online presence that lasts with Yardwise
           </p>
           <div className="flex gap-4">
             {user ? (

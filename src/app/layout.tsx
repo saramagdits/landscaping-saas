@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Klumsi - Empower Your Team",
+  title: "Yardwise - Empower Your Team",
   description: "Empower your team with our powerful platform",
   viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
 };

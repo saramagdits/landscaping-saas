@@ -1,4 +1,4 @@
-# Klumsi - Landscape SaaS Platform
+# Yardwise - Landscape SaaS Platform
 
 A modern SaaS platform built with Next.js, featuring Google OAuth authentication and Firestore user management.
 

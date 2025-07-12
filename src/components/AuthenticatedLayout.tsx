@@ -66,7 +66,7 @@ export const AuthenticatedLayout: React.FC<AuthenticatedLayoutProps> = ({ childr
               <div className="bg-[#e6ff4a] rounded w-8 h-8 flex items-center justify-center">
                 <span className="text-[#313c2c] font-bold text-xl">K</span>
               </div>
-              <span className="font-bold text-xl tracking-tight">klumsi</span>
+              <span className="font-bold text-xl tracking-tight">Yardwise</span>
             </div>
             <button
               onClick={() => setSidebarOpen(false)}
